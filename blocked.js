@@ -73,6 +73,25 @@ function processBlockInfo(info) {
 	let continueButton = document.getElementById("continue");
 	continueButton.onclick = function(){ onFocusComplete(continuationContext); };
 
+	// Display previously saved text in focus text editor
+	let focusTextBlock = document.getElementById('focusTextBlock');
+	if (focusTextBlock) {
+		// Restore previous text
+		let savedText = localStorage.getItem('focusText');
+		if (savedText) {
+			focusTextBlock.value = savedText;
+		}
+		// Focus the cursor immediately on the box for faster note-taking
+		focusTextBlock.focus();
+	}
+
+	// Save text to local storage whenever there is a change in the text area
+	document.getElementById('focusTextBlock').addEventListener('input', function () {
+		let textValue = this.value;
+		localStorage.setItem('focusText', textValue);
+	});
+
+
 	if (info.reloadSecs) {
 		// Reload blocked page after specified time
 		window.setTimeout(reloadBlockedPage, info.reloadSecs * 1000);
