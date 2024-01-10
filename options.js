@@ -84,6 +84,7 @@ function initForm(numSets) {
 		$(`#defaultPage${set}`).click(function (e) { $(`#blockURL${set}`).val(DEFAULT_BLOCK_URL); });
 		$(`#delayingPage${set}`).click(function (e) { $(`#blockURL${set}`).val(DELAYED_BLOCK_URL); });
 		$(`#blankPage${set}`).click(function (e) { $(`#blockURL${set}`).val("about:blank"); });
+		$(`#focusPage${set}`).click(function (e) { $(`#blockURL${set}`).val(FOCUS_BLOCK_URL); });
 		$(`#resetOpts${set}`).click(function (e) {
 			resetSetOptions(set);
 			$("#alertResetOptions").dialog("open");
@@ -1071,7 +1072,7 @@ function disableSetOptions(set, disabled) {
 	let items = [
 		"resetOpts",
 		"allDay",
-		"defaultPage", "delayingPage", "blankPage",
+		"defaultPage", "delayingPage", "blankPage", "focusPage",
 		"clearRegExpBlock", "genRegExpBlock",
 		"clearRegExpAllow", "genRegExpAllow",
 		"cancelLockdown"
