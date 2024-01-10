@@ -7,6 +7,7 @@ const CLOCKABLE_URL = /^(http|file)/i;
 const EXTENSION_URL = browser.runtime.getURL("");
 const BLOCKED_PAGE_URL = browser.runtime.getURL(BLOCKED_PAGE);
 const DELAYED_PAGE_URL = browser.runtime.getURL(DELAYED_PAGE);
+const FOCUS_PAGE_URL = browser.runtime.getURL(FOCUS_PAGE);
 
 function log(message) { console.log("[LBNG] " + message); }
 function warn(message) { console.warn("[LBNG] " + message); }
@@ -457,6 +458,7 @@ function checkTab(id, isBeforeNav, isRepeat) {
 			|| !gTabs[id].blockable
 			|| url.startsWith(BLOCKED_PAGE_URL)
 			|| url.startsWith(DELAYED_PAGE_URL)
+			|| url.startsWith(FOCUS_PAGE_URL)
 			|| (url.startsWith(LEECHBLOCK_URL) && gOptions["allowLBWebsite"])) {
 		return false; // not blocked
 	}
@@ -1371,7 +1373,7 @@ function openExtensionPage(url) {
 // Open page blocked by delaying page
 //
 function openDelayedPage(id, url, set, autoLoad) {
-	//log("openDelayedPage: " + id + " " + url);
+	log("openDelayedPage: " + id + " " + url);
 
 	if (!gGotOptions || set < 1 || set > gNumSets) {
 		return;
@@ -1486,7 +1488,10 @@ function handleMessage(message, sender, sendResponse) {
 			// Delaying page countdown completed
 			let url = message.blockedURL;
 			let set = message.blockedSet;
-			let autoLoad = gOptions[`delayAutoLoad${set}`];
+			let autoLoad = message.autoLoad;
+			if (!autoLoad) {
+				autoLoad = gOptions[`delayAutoLoad${set}`];
+			}
 			openDelayedPage(sender.tab.id, url, set, autoLoad);
 			break;
 

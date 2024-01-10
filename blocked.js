@@ -66,6 +66,13 @@ function processBlockInfo(info) {
 		countdown.interval = window.setInterval(onCountdownTimer, 1000, countdown);
 	}
 
+	let continuationContext = {
+			blockedURL: info.blockedURL,
+			blockedSet: info.blockedSet
+	}
+	let continueButton = document.getElementById("continue");
+	continueButton.onclick = function(){ onFocusComplete(continuationContext); };
+
 	if (info.reloadSecs) {
 		// Reload blocked page after specified time
 		window.setTimeout(reloadBlockedPage, info.reloadSecs * 1000);
@@ -109,6 +116,17 @@ function onCountdownTimer(countdown) {
 		};
 		browser.runtime.sendMessage(message);
 	}
+}
+
+function onFocusComplete(context) {
+		// Reuse the reload functionality for delaying page
+		let message = {
+			type: "delayed",
+			blockedURL: context.blockedURL,
+			blockedSet: context.blockedSet,
+			autoLoad: true
+		};
+		browser.runtime.sendMessage(message);
 }
 
 // Attempt to reload blocked page

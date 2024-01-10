@@ -6,8 +6,10 @@ const MAX_SETS = 30;
 const ALL_DAY_TIMES = "0000-2400";
 const BLOCKED_PAGE = "blocked.html";
 const DELAYED_PAGE = "delayed.html";
+const FOCUS_PAGE = "focus.html";
 const DEFAULT_BLOCK_URL = "blocked.html?$S&$U";
 const DELAYED_BLOCK_URL = "delayed.html?$S&$U";
+const FOCUS_BLOCK_URL = "focus.html?$S&$U";
 const DEFAULT_ICON = { 16: "icons/leechblock16.png", 32: "icons/leechblock32.png" };
 const OVERRIDE_ICON = { 16: "icons/leechblock16o.png", 32: "icons/leechblock32o.png" };
 
@@ -15,7 +17,7 @@ const PARSE_URL = /^((([\w-]+):\/*(\w+(?::\w+)?@)?([\w-\.]+)(?::(\d*))?)([^\?#]*
 
 const ABSOLUTE_URL = /^[\w-]+:/;
 
-const INTERNAL_BLOCK_URL = /^(\w+\/)?(blocked|delayed)\.html\?\$S&\$U$/;
+const INTERNAL_BLOCK_URL = /^(\w+\/)?(blocked|delayed|focus)\.html\?\$S&\$U$/;
 
 const LEECHBLOCK_URL = "https://www.proginosko.com/leechblock/";
 
