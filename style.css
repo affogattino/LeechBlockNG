@@ -39,3 +39,11 @@ a:hover {
 .logo {
 	width: 408px;
 }
+
+.leechblock-continue-button {
+	padding: 8px;
+	border-radius: 5px;
+    color: #fff;
+    background-color: #2ca089;
+
+}
