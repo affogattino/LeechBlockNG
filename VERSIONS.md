@@ -1,3 +1,7 @@
+### Version 1.6.3 (26 Dec 2023)
+* Added focus page.
+
+
 ### Version 1.6.2 (26 Dec 2023)
 * Added option to limit number of overrides per hour/day/week.
 * Added option to block only private/non-private tabs.

@@ -8,7 +8,7 @@
 			"64": "icons/leechblock64.png"
 		},
 		"default_popup": "popup.html",
-		"default_title": "LeechBlock"
+		"default_title": "LeechBlock Focus"
 	},
 
 	"author": "James Anderson",
@@ -19,7 +19,7 @@
 
 	"browser_specific_settings": {
 		"gecko": {
-			"id": "leechblockng@proginosko.com",
+			"id": "affogattino@pm.me",
 			"strict_min_version": "109.0"
 		}
 	},
@@ -37,7 +37,7 @@
 
 	"description": "__MSG_extensionDescription__",
 
-	"homepage_url": "https://www.proginosko.com/leechblock/",
+	"homepage_url": "https://github.com/affogattino/LeechBlockNG",
 
 	"host_permissions": [
 		"<all_urls>"
@@ -72,6 +72,6 @@
 		"webNavigation"
 	],
 
-	"version": "1.6.2"
+	"version": "1.6.3"
 
 }
